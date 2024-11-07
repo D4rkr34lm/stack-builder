@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "outDir": "./build",
+    "paths": {
+      "@projecteer/shared/lib/*": ["../shared/lib/*"],
+      "@projecteer/api/*": ["../api/*"]
+    }
+  },
+  "include": ["./src/**/*"]
+}

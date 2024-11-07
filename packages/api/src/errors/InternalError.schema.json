@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://herz.projecteer.de/schemas/InternalError",
+  "title": "InternalError",
+  "type": "object",
+  "required": ["code", "source", "message"],
+  "properties": {
+    "code": {"type": "number"},
+    "message": {"pattern": "internal/.*"},
+    "source": {"type": "string"}
+  },
+  "examples": [{
+    "code": "500",
+    "message": "internal/something-went-wrong",
+    "source": "079fc905-d8e1-4be0-aef9-178e4baee745"
+  }]
+}

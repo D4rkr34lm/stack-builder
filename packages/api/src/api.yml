@@ -1,0 +1,74 @@
+openapi: "3.1.0"
+info:
+  title: Internal api
+  description: Backend REST-Api for stack-builder
+  version: "1.0.0"
+servers:
+  - url: http://localhost:8020/api
+security:
+  - cookieAuth: []
+
+paths:
+  /auth/register:
+    post:
+      summary: Register a user
+      operationId: register
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./modules/auth/EmailRegisterRequest.schema.json
+      tags:
+        - auth
+      responses:
+        "201":
+          description: The user has been registered
+        "400":
+          description: There are no users with given credentials
+          content:
+            application/json:
+              schema:
+                $ref: "./errors/BadRequestError.schema.json"
+        "500":
+          description: Something went wrong internal
+          content:
+            application/json:
+              schema:
+                $ref: ./errors/InternalError.schema.json
+  /auth/login:
+    post:
+      summary: Log in a user
+      operationId: login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./modules/auth/EmailLoginRequest.schema.json
+      tags:
+        - auth
+      responses:
+        "200":
+          description: The user has been logged in
+        "400":
+          description: The user already exists
+          content:
+            application/json:
+              schema:
+                $ref: "./errors/BadRequestError.schema.json"
+        "500":
+          description: Something went wrong internal
+          content:
+            application/json:
+              schema:
+                $ref: ./errors/InternalError.schema.json
+
+components:
+  securitySchemes: 
+    cookieAuth: # arbitrary name for the security scheme; will be used in the "security" key later
+      type: apiKey
+      in: cookie
+      name: JSESSIONID # cookie name

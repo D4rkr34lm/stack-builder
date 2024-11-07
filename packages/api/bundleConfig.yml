@@ -1,0 +1,4 @@
+apis:
+  v1:
+    root: ./src/api.yml
+    output: "api.bundle.yml"

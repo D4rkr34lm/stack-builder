@@ -1,0 +1,37 @@
+{
+  "extensions": {},
+  "folders": [
+    { "name": "frontend", "path": "./packages/frontend" },
+    { "name": "backend", "path": "./packages/backend" },
+    { "name": "shared", "path": "./packages/shared" },
+    { "name": "api", "path": "./packages/api" },
+    { "name": "root", "path": "." }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#007773"
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "always",
+      "source.addMissingImports.ts": "always",
+      "source.removeUnusedImports": "always",
+      "source.organizeImports": "always"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "files.eol": "\r\n",
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "server": "localhost",
+        "port": 9001,
+        "driver": "PostgreSQL",
+        "name": "DEV",
+        "database": "postgres",
+        "username": "postgres",
+        "password": "dev-pw"
+      }
+    ]
+  }
+}

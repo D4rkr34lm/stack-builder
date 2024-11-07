@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://herz.projecteer.de/schemas/ForbiddenError",
+  "title": "ForbiddenError",
+  "type": "object",
+  "required": ["code", "source", "message"],
+  "properties": {
+    "code": {"type": "number"},
+    "message": {"pattern": "forbidden/.*"},
+    "source": {"type": "string"}
+  },
+  "examples": [{
+    "code": "403",
+    "message": "forbidden/permissions-do-not-suffice",
+    "source": "ab75d430-1650-467c-8305-7b15e0e401d6"
+  }]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://herz.projecteer.de/schemas/BadRequestError",
+  "title": "BadRequestError",
+  "type": "object",
+  "required": ["code", "source", "message"],
+  "properties": {
+    "code": {"type": "number"},
+    "message": {"pattern": "bad-request/.*"},
+    "source": {"type": "string"}
+  },
+  "examples": [{
+      "code": "400",
+      "message": "bad-request/request-type-check-failed",
+      "source": "73a7df2f-2391-48e5-9b98-df9089f6b290"
+  }]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@projecteer/api",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "bundle": "redocly bundle --config='./bundleConfig.yml' --dereferenced --remove-unused-components",
+    "generate:clients": "openapi-generator-cli generate -i api.bundle.yml -o gen -g typescript-axios",
+    "generate:types": "openapi-typescript api.bundle.yml -o ./lib/openapi.d.ts",
+    "generate:schema-types": "tsx ./scripts/buildJsonSchemas",
+    "generate:security-types": "tsx ./scripts/buildSecurityDef",
+    "build": "npm run bundle && npm run generate:types && npm run generate:clients && npm run generate:schema-types && npm run generate:security-types && tsc"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.14.0",
+    "@redocly/cli": "^1.25.5",
+    "commander": "^12.1.0",
+    "json-schema-to-typescript": "^15.0.2",
+    "openapi-typescript": "7.4.1",
+    "ts-morph": "^24.0.0",
+    "tsx": "^4.19.1",
+    "yaml": "^2.6.0"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  }
+}

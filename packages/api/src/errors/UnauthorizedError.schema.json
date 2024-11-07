@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://herz.projecteer.de/schemas/UnauthorizedError",
+  "title": "UnauthorizedError",
+  "type": "object",
+  "required": ["code", "source", "message"],
+  "properties": {
+    "code": {"type": "number"},
+    "message": {"pattern": "unauthorized/.*"},
+    "source": {"type": "string"}
+  },
+  "examples": [
+    {
+      "code": "401",
+      "message": "unauthorized/auth-missing",
+      "source": "56dfbbed-e9d4-4d77-9dc9-2c7477a53fbc"
+    }
+  ]
+}

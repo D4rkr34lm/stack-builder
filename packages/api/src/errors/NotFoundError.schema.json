@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://herz.projecteer.de/schemas/NotFoundError",
+  "title": "NotFoundError",
+  "type": "object",
+  "required": ["code", "source", "message"],
+  "properties": {
+    "code": {"type": "number"},
+    "message": {"pattern": "not-found/.*"},
+    "source": {"type": "string"}
+  },
+  "examples": [
+    {
+      "code": "404",
+      "message": "not-found/recourse-not-found",
+      "source": "91ade9e3-c950-48fc-9e0f-4994fa325d4f"
+    }
+  ]
+}

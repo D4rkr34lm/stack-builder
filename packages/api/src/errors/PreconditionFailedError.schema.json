@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://herz.projecteer.de/schemas/PreconditionFailedError",
+  "title": "PreconditionFailedError",
+  "type": "object",
+  "required": ["code", "source", "message"],
+  "properties": {
+    "code": {"type": "number"},
+    "message": {"pattern": "precondition-failed/.*"},
+    "source": {"type": "string"}
+  },
+  "examples": [{
+    "code": "412",
+    "message": "precondition-failed/etag-mismatch",
+    "source": "bac0529e-70cf-4b4e-b1f6-eb94604d30cb"
+  }]
+}
