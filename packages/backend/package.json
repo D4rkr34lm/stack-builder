@@ -7,7 +7,8 @@
   "scripts": {
     "build": "rollup ./src/index.ts --config",
     "dev": "nodemon --env-file=dev.env ./build/dist.cjs",
-    "watch": "rollup ./src/index.ts --config --watch"
+    "watch": "rollup ./src/index.ts --config --watch",
+    "test": "vitest run"
   },
   "main": "dist.cjs",
   "author": "Manuel Frohn",

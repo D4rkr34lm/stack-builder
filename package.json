@@ -13,7 +13,11 @@
   "scripts": {
     "shared:watch": "cd ./packages/shared && npm run watch",
     "shared:build": "cd ./packages/shared && npm run build",
-    "api:build": "cd ./packages/api && npm run build"
+    "api:build": "cd ./packages/api && npm run build",
+    "backend:build": "cd ./packages/backend && npm run build",
+    "backend:watch": "cd ./packages/backend && npm run watch",
+    "backend:test": "cd ./packages/backend && npm run test",
+    "backend:dev": "cd ./packages/backend && npm run dev"
   },
   "devDependencies": {
     "@eslint/js": "9.14.0",
