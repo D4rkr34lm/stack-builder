@@ -11,8 +11,8 @@
     "sourceMap": true,
     "outDir": "./build",
     "paths": {
-      "@projecteer/shared/lib/*": ["../shared/lib/*"],
-      "@projecteer/api/*": ["../api/*"]
+      "@stack-builder/shared/lib/*": ["../shared/lib/*"],
+      "@stack-builder/api/*": ["../api/*"]
     }
   },
   "include": ["./src/**/*"]

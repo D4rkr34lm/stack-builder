@@ -1,12 +1,17 @@
-import type { ApiErrorCode } from "@projecteer/shared/lib/util/types/apiError";
+import { logger } from "../logger/logger";
+import { HttpStatusCode } from "./types/httpStatusCodes";
 
-export function createApiError<ErrorCode extends ApiErrorCode>(code: ErrorCode, message: string, source: string) {
+export function createApiError(
+  code: HttpStatusCode,
+  source: string,
+  msg: string,
+  additionalData?: { [key: string]: unknown },
+) {
+  logger.warn(additionalData, `${msg} | returned at ${source}`);
+
   return {
     code,
-    body: {
-      code,
-      message,
-      source,
-    },
+    source,
+    msg,
   };
 }

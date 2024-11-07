@@ -1,12 +1,10 @@
-import { forEach } from "lodash";
-import { isHttpMethod, isRoute, router, Router } from "./router";
+import { routeSecurityLevel } from "@stack-builder/api/lib/security-def";
+import cors from "cors";
 import type { Express } from "express";
 import express from "express";
-import cors from "cors";
 import expressAsyncHandler from "express-async-handler";
-import { loggerMiddleware } from "./middleware/logger";
-import { authMiddleware } from "./middleware/auth";
-import { routeSecurityLevel } from "@projecteer/api/lib/security-def";
+import { forEach } from "lodash";
+import { isHttpMethod, isRoute, router, Router } from "./router";
 
 function addRouterToExpress(app: Express, router: Router) {
   forEach(router, (routeHandler, route) => {
@@ -30,7 +28,11 @@ function addRouterToExpress(app: Express, router: Router) {
                 }
               : undefined;
 
-          const handlerResult = await routeMethodHandler(params, requestBody, authInfo as undefined);
+          const handlerResult = await routeMethodHandler(
+            params,
+            requestBody,
+            authInfo as undefined,
+          );
 
           response
             .status(handlerResult.code)
@@ -47,8 +49,6 @@ export function initAPI() {
 
   app.use(cors());
   app.use(express.json());
-  app.use(loggerMiddleware);
-  app.use(authMiddleware);
 
   addRouterToExpress(app, router);
   app.listen(8020);

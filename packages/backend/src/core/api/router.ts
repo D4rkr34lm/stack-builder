@@ -1,8 +1,6 @@
+import type { paths } from "@stack-builder/api/lib/openapi.js";
 
-
-import type { paths } from "@projecteer/api/lib/openapi.js";
-
-import type { RouterSecurityDef } from "@projecteer/api/lib/security-def.js";
+import type { RouterSecurityDef } from "@stack-builder/api/lib/security-def.js";
 
 export type UnionizeObjectFields<obj extends object> = obj[keyof obj];
 
@@ -25,7 +23,9 @@ export type Router = {
           requestBody: paths[route][method]["requestBody"]["content"]["application/json"] extends never
             ? undefined
             : paths[route][method]["requestBody"]["content"]["application/json"],
-          authInfo: RouterSecurityDef[route][method] extends never ? undefined : RouterSecurityDef[route][method],
+          authInfo: RouterSecurityDef[route][method] extends never
+            ? undefined
+            : RouterSecurityDef[route][method],
         ) => Promise<
           UnionizeObjectFields<{
             [responseCode in keyof paths[route][method]["responses"]]: {
@@ -33,7 +33,9 @@ export type Router = {
               headers?: paths[route][method]["responses"][responseCode] extends { headers: unknown }
                 ? paths[route][method]["responses"][responseCode]["headers"]
                 : never;
-              body: paths[route][method]["responses"][responseCode] extends { content: { "application/json": unknown } }
+              body: paths[route][method]["responses"][responseCode] extends {
+                content: { "application/json": unknown };
+              }
                 ? paths[route][method]["responses"][responseCode]["content"]["application/json"]
                 : never;
             };
@@ -41,8 +43,10 @@ export type Router = {
         >;
   };
 };
-export type RequestHandler<route extends Route, method extends keyof Router[route]> = Router[route][method];
+export type RequestHandler<
+  route extends Route,
+  method extends keyof Router[route],
+> = Router[route][method];
 export const apiPrefix = "/api";
 
-export const router: Router = {
-};
+export const router: Router = {};

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "description": "",
+  "description": "Api documentation for stack-builder",
   "scripts": {
     "bundle": "redocly bundle --config='./bundleConfig.yml' --dereferenced --remove-unused-components",
     "generate:clients": "openapi-generator-cli generate -i api.bundle.yml -o gen -g typescript-axios",
