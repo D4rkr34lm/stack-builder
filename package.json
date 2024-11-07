@@ -1,15 +1,19 @@
 {
-  "name": "@web-tech/monorepo",
+  "name": "stack-builder",
   "version": "1.0.0",
-  "description": "A template fullstack repo for the RWTH WebTech Course",
+  "description": "The monorepo of stack-builder",
   "workspaces": [
     "./packages/backend",
     "./packages/frontend",
-    "./packages/shared"
+    "./packages/shared",
+    "./packages/api"
   ],
   "author": "Manuel Frohn",
   "license": "ISC",
   "scripts": {
+    "shared:watch": "cd ./packages/shared && npm run watch",
+    "shared:build": "cd ./packages/shared && npm run build",
+    "api:build": "cd ./packages/api && npm run build"
   },
   "devDependencies": {
     "@eslint/js": "9.14.0",

@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  title: Internal api
+  description: Backend REST-Api for stack-builder
+  version: 1.0.0
+servers:
+  - url: http://localhost:8020/api
+security:
+  - cookieAuth: []
+paths:
+  /auth/register:
+    post:
+      summary: Register a user
+      operationId: register
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              $id: http://herz.projecteer.de/schemas/EmailRegisterRequest
+              title: EmailRegisterRequest
+              type: object
+              required:
+                - email
+                - username
+                - password
+              properties:
+                email:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+              examples:
+                - email: manu@herz-cloud.de
+                  username: Manuel
+                  password: test123
+      tags:
+        - auth
+      responses:
+        '201':
+          description: The user has been registered
+        '400':
+          description: There are no users with given credentials
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-07/schema#
+                $id: http://herz.projecteer.de/schemas/BadRequestError
+                title: BadRequestError
+                type: object
+                required: &ref_0
+                  - code
+                  - source
+                  - message
+                properties: &ref_1
+                  code:
+                    type: number
+                  message:
+                    pattern: bad-request/.*
+                  source:
+                    type: string
+                examples: &ref_2
+                  - code: '400'
+                    message: bad-request/request-type-check-failed
+                    source: 73a7df2f-2391-48e5-9b98-df9089f6b290
+        '500':
+          description: Something went wrong internal
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-07/schema#
+                $id: http://herz.projecteer.de/schemas/InternalError
+                title: InternalError
+                type: object
+                required: &ref_3
+                  - code
+                  - source
+                  - message
+                properties: &ref_4
+                  code:
+                    type: number
+                  message:
+                    pattern: internal/.*
+                  source:
+                    type: string
+                examples: &ref_5
+                  - code: '500'
+                    message: internal/something-went-wrong
+                    source: 079fc905-d8e1-4be0-aef9-178e4baee745
+  /auth/login:
+    post:
+      summary: Log in a user
+      operationId: login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              $id: http://herz.projecteer.de/schemas/EmailLoginRequest
+              title: EmailLoginRequest
+              required:
+                - email
+                - password
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              examples:
+                - email: manu@herz-cloud.de
+                  password: test123
+      tags:
+        - auth
+      responses:
+        '200':
+          description: The user has been logged in
+        '400':
+          description: The user already exists
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-07/schema#
+                $id: http://herz.projecteer.de/schemas/BadRequestError
+                title: BadRequestError
+                type: object
+                required: *ref_0
+                properties: *ref_1
+                examples: *ref_2
+        '500':
+          description: Something went wrong internal
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-07/schema#
+                $id: http://herz.projecteer.de/schemas/InternalError
+                title: InternalError
+                type: object
+                required: *ref_3
+                properties: *ref_4
+                examples: *ref_5
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: JSESSIONID

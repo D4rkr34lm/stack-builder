@@ -1,0 +1,8 @@
+{
+  "name": "@stack-builder/shared",
+  "version": "*",
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --watch"
+  }
+}
