@@ -1,8 +1,16 @@
 {
   "name": "@stack-builder/shared",
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "",
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc",
     "watch": "tsc --watch"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "author": "Manuel Frohn",
+  "license": "ISC"
 }

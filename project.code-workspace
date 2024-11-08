@@ -5,17 +5,17 @@
     { "name": "backend", "path": "./packages/backend" },
     { "name": "shared", "path": "./packages/shared" },
     { "name": "api", "path": "./packages/api" },
-    { "name": "root", "path": "." }
+    { "name": "root", "path": "." },
   ],
   "settings": {
     "workbench.colorCustomizations": {
-      "titleBar.activeBackground": "#007773"
+      "titleBar.activeBackground": "#009b96",
     },
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
       "source.addMissingImports.ts": "always",
       "source.removeUnusedImports": "always",
-      "source.organizeImports": "always"
+      "source.organizeImports": "always",
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -30,8 +30,9 @@
         "name": "DEV",
         "database": "postgres",
         "username": "postgres",
-        "password": "dev-pw"
-      }
-    ]
-  }
+        "password": "dev-pw",
+      },
+    ],
+    "typescript.tsdk": "root/node_modules/typescript/lib",
+  },
 }
