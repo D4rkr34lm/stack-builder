@@ -1,3 +1,4 @@
+import { User } from "@stack-builder/shared/lib/models/user";
 import { getDbConnection } from "../../core/db/db";
 import { tUser } from "../../core/db/tables/user";
 

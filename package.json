@@ -10,6 +10,8 @@
   ],
   "author": "Manuel Frohn",
   "license": "ISC",
+  "private": true,
+  "type": "module",
   "scripts": {
     "shared:watch": "cd ./packages/shared && npm run watch",
     "shared:build": "cd ./packages/shared && npm run build",

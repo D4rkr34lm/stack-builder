@@ -25,6 +25,10 @@ paths:
       responses:
         "201":
           description: The user has been registered
+          content:
+            application/json:
+              schema:
+                $ref: ./modules/auth/EmailAuthResponse.schema.json
         "400":
           description: There are no users with given credentials
           content:
@@ -53,6 +57,10 @@ paths:
       responses:
         "200":
           description: The user has been logged in
+          content:
+            application/json:
+              schema:
+                $ref: ./modules/auth/EmailAuthResponse.schema.json
         "400":
           description: The user already exists
           content:
@@ -67,7 +75,7 @@ paths:
                 $ref: ./errors/InternalError.schema.json
 
 components:
-  securitySchemes: 
+  securitySchemes:
     cookieAuth: # arbitrary name for the security scheme; will be used in the "security" key later
       type: apiKey
       in: cookie

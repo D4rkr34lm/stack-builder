@@ -1,4 +1,4 @@
-import { hasValue } from "@stack-builder/shared/lib/typeGuards";
+import { hasValue } from "@stack-builder/shared/lib/utils/typeGuards";
 import { toNumber } from "lodash";
 import { Pool } from "pg";
 import { PostgreSqlConnection } from "ts-sql-query/connections/PostgreSqlConnection";

@@ -1,18 +1,18 @@
-{  
+{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://herz.projecteer.de/schemas/EmailRegisterRequest",
   "title": "EmailRegisterRequest",
   "type": "object",
   "required": ["email", "username", "password"],
   "properties": {
-    "email": {"type": "string"},
-    "username": {"type": "string"},
-    "password": {"type": "string"}
+    "email": { "type": "string" },
+    "name": { "type": "string" },
+    "password": { "type": "string" }
   },
-   "examples": [
+  "examples": [
     {
       "email": "manu@herz-cloud.de",
-      "username": "Manuel",
+      "name": "Manuel Frohn",
       "password": "test123"
     }
   ]
